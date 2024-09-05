@@ -1,0 +1,19 @@
+﻿@page "/"
+
+@inject IJSRuntime JS
+<div id="gjs"></div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await InitializeGrapesJSEditor();
+        }
+    }
+
+    private async Task InitializeGrapesJSEditor()
+    {
+        await JS.InvokeVoidAsync("initializeGrapesJS");
+    }
+}
